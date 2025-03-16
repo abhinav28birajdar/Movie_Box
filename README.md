@@ -1,50 +1,68 @@
-# Welcome to your Expo app 👋
+# Movie Box
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Movie Box is a movie discovery and information app built using **Expo, TypeScript, and NativeWind**. It fetches movie data from the **TMDB API**, allowing users to explore trending movies, search for specific films, and view detailed movie information.
 
-## Get started
+## Features
+- 📽️ Browse trending and popular movies
+- 🔍 Search for movies by title
+- 📄 View detailed movie information (synopsis, ratings, release date, etc.)
+- 🎬 Watch movie trailers (if available)
+- 🎨 Beautiful UI with NativeWind for styling
 
-1. Install dependencies
+## Tech Stack
+- **React Native** (with Expo)
+- **TypeScript**
+- **NativeWind** (Tailwind CSS for React Native)
+- **TMDB API** (for fetching movie data)
 
-   ```bash
+## Installation
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/yourusername/movie-box.git
+   cd movie-box
+   ```
+2. Install dependencies:
+   ```sh
    npm install
    ```
-
-2. Start the app
-
-   ```bash
-    npx expo start
+3. Create a `.env` file in the root directory and add your **TMDB API Key**:
+   ```env
+   TMDB_API_KEY=your_tmdb_api_key
+   ```
+4. Start the Expo server:
+   ```sh
+   npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+## API Configuration
+- Sign up at [TMDB](https://www.themoviedb.org/) to get an API key.
+- Store the key in the `.env` file as shown above.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+## Project Structure
+```
+movie-box/
+│── src/
+│   ├── components/   # Reusable UI components
+│   ├── screens/      # Application screens
+│   ├── hooks/        # Custom hooks for API calls
+│   ├── navigation/   # Navigation setup
+│   ├── utils/        # Helper functions
+│── App.tsx          # Main entry file
+│── tailwind.config.js # NativeWind config
+│── package.json
+│── .env
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## How to Contribute
+1. Fork the repository.
+2. Create a new branch: `git checkout -b feature-branch`
+3. Make your changes and commit: `git commit -m "Your commit message"`
+4. Push to your fork: `git push origin feature-branch`
+5. Open a Pull Request.
 
-## Learn more
+## Issues
+If you find any bugs or have feature requests, please open an issue on [GitHub](https://github.com/yourusername/movie-box/issues).
 
-To learn more about developing your project with Expo, look at the following resources:
+## License
+This project is licensed under the **MIT License**.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
