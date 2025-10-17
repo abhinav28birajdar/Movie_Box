@@ -30,10 +30,11 @@ class FreeKeysManager {
 
     try {
       // Fetch new keys
-      this.keys = await freekeys();
+      const fetchedKeys = await freekeys();
+      this.keys = fetchedKeys;
       this.lastFetchTime = now;
       console.log('✅ New API keys fetched successfully');
-      return this.keys;
+      return fetchedKeys;
     } catch (error) {
       console.error('❌ Error fetching API keys:', error);
       

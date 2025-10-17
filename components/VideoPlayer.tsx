@@ -14,13 +14,13 @@ import { Video, ResizeMode, AVPlaybackStatus } from 'expo-av';
 import * as ScreenOrientation from 'expo-screen-orientation';
 import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
-import SavedMoviesService from '../../services/savedMoviesService';
+import SavedMoviesService from '@/services/savedMoviesService';
 
 interface VideoPlayerProps {
   videoUrl: string;
   movieId: number;
   title: string;
-  poster?: string;
+  poster?: string | null;
   onClose?: () => void;
 }
 

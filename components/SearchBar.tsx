@@ -8,7 +8,7 @@ interface props {
     value?: string;
     onChangeText?: (text: string) => void;
 }
-const SearchBar = ({placeholder, onPress, value, onChangeText}) => {
+const SearchBar = ({placeholder, onPress, value, onChangeText}: props) => {
   return (
         <View className=' flex-row items-center bg-dark-200  rounded-full px-5 py-2'>
             <TextInput

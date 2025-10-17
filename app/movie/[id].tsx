@@ -27,7 +27,7 @@ import {
 } from '@/services/movieApi';
 import SavedMoviesService, { WatchProgress, UserRating } from '@/services/savedMoviesService';
 import AuthService from '@/services/authService';
-import VideoPlayer from '@/components/VideoPlayer';
+import VideoPlayer from '../../components/VideoPlayer';
 
 export default function MovieDetails() {
   const { id } = useLocalSearchParams();
@@ -228,7 +228,7 @@ export default function MovieDetails() {
       <Image
         source={{ 
           uri: item.profile_path 
-            ? getImageUrl(item.profile_path, 'w500') 
+            ? getImageUrl(item.profile_path, 'w500') || undefined
             : undefined 
         }}
         className="w-16 h-16 rounded-full bg-gray-800 mb-2"
@@ -250,8 +250,8 @@ export default function MovieDetails() {
       onPress={() => router.push(`/movie/${item.id}`)}
     >
       <Image
-        source={{ uri: getImageUrl(item.poster_path, 'w500') || undefined }}
-        className="w-full h-36 rounded-lg bg-gray-800 mb-2"
+        source={{ uri: movie?.poster_path ? getImageUrl(movie.poster_path, 'w500') || undefined : undefined }}
+        className="w-24 h-36 rounded-lg bg-gray-800 mr-4"
         resizeMode="cover"
       />
       <Text className="text-white text-sm" numberOfLines={2}>
@@ -314,7 +314,7 @@ export default function MovieDetails() {
         videoUrl={`https://www.youtube.com/watch?v=${selectedVideo.key}`}
         movieId={movieId}
         title={movie.title}
-        poster={getImageUrl(movie.poster_path)}
+        poster={movie.poster_path ? getImageUrl(movie.poster_path) : null}
         onClose={() => {
           setShowVideoPlayer(false);
           setSelectedVideo(null);
@@ -329,7 +329,7 @@ export default function MovieDetails() {
       {/* Hero Section */}
       <View className="relative">
         <Image
-          source={{ uri: getImageUrl(movie.backdrop_path, 'w1280') || undefined }}
+          source={{ uri: movie.backdrop_path ? getImageUrl(movie.backdrop_path, 'w1280') || undefined : undefined }}
           className="w-full h-80"
           resizeMode="cover"
         />
