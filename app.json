@@ -8,7 +8,7 @@
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
-    "sdkVersion": "54.0.0",
+    "sdkVersion": "49.0.0",
     "ios": {
       "supportsTablet": true
     },
