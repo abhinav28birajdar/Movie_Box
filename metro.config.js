@@ -1,19 +1,11 @@
-// Learn more https://docs.expo.io/guides/customizing-metro
-const { getDefaultConfig } = require('@expo/metro-config');
-const { withNativeWind } = require('nativewind/metro');
 const path = require('path');
+const { getDefaultConfig } = require('expo/metro-config');
 
-// Get the Metro config
-const config = getDefaultConfig(__dirname, {
-  // [Web-only]: Enables CSS support in Metro.
-  isCSSEnabled: true,
-});
-
-// Add additional resolvers
-config.resolver.sourceExts = ['jsx', 'js', 'ts', 'tsx', 'cjs', 'json', 'mjs'];
+const defaultConfig = getDefaultConfig(__dirname);
+const { resolver, transformer } = defaultConfig;
 
 // Add support for import aliases
-config.resolver.extraNodeModules = {
+const extraNodeModules = {
   '@': path.resolve(__dirname),
   'app': path.resolve(__dirname, 'app'),
   'components': path.resolve(__dirname, 'components'),
@@ -21,4 +13,17 @@ config.resolver.extraNodeModules = {
   'services': path.resolve(__dirname, 'services')
 };
 
-module.exports = withNativeWind(config, { input: './global.css' });
+// NativeWind configuration
+defaultConfig.transformer = {
+  ...transformer,
+  babelTransformerPath: require.resolve('nativewind/dist/babel')
+};
+
+defaultConfig.resolver = {
+  ...resolver,
+  assetExts: resolver.assetExts.filter((ext) => ext !== 'svg'),
+  sourceExts: [...resolver.sourceExts, 'svg', 'cjs', 'mjs'],
+  extraNodeModules
+};
+
+module.exports = defaultConfig;

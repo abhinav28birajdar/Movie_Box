@@ -20,7 +20,7 @@ const SearchBar = ({placeholder, onPress, value, onChangeText}: props) => {
                 onSubmitEditing={onPress}
             />
             <TouchableOpacity onPress={onPress}>
-                <Image source={icons.search} className ="size-5"resizeMode='contain'tintColor= "#ab8bff"/>
+                <Image source={icons.search} className="w-5 h-5" resizeMode='contain' tintColor="#ab8bff"/>
             </TouchableOpacity>
     </View>
   )
