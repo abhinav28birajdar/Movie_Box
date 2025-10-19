@@ -1,11 +1,11 @@
-const path = require('path');
+// Simple metro config for Expo 49
 const { getDefaultConfig } = require('expo/metro-config');
+const path = require('path');
 
-const defaultConfig = getDefaultConfig(__dirname);
-const { resolver, transformer } = defaultConfig;
+const config = getDefaultConfig(__dirname);
 
 // Add support for import aliases
-const extraNodeModules = {
+config.resolver.extraNodeModules = {
   '@': path.resolve(__dirname),
   'app': path.resolve(__dirname, 'app'),
   'components': path.resolve(__dirname, 'components'),
@@ -13,17 +13,7 @@ const extraNodeModules = {
   'services': path.resolve(__dirname, 'services')
 };
 
-// NativeWind configuration
-defaultConfig.transformer = {
-  ...transformer,
-  babelTransformerPath: require.resolve('nativewind/dist/babel')
-};
+// Add support for additional file types
+config.resolver.sourceExts = [...config.resolver.sourceExts, 'svg', 'cjs', 'mjs'];
 
-defaultConfig.resolver = {
-  ...resolver,
-  assetExts: resolver.assetExts.filter((ext) => ext !== 'svg'),
-  sourceExts: [...resolver.sourceExts, 'svg', 'cjs', 'mjs'],
-  extraNodeModules
-};
-
-module.exports = defaultConfig;
+module.exports = config;

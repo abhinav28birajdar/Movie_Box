@@ -3,8 +3,9 @@ module.exports = function (api) {
   return {
     presets: ['babel-preset-expo'],
     plugins: [
+      // Expo Router uses React Navigation under the hood
       'expo-router/babel',
-      'react-native-reanimated/plugin',
+      // Reanimated plugin must be listed last
       ['module:react-native-dotenv', {
         'env': ['API_KEY'],
         'moduleName': '@env',
@@ -12,7 +13,8 @@ module.exports = function (api) {
         'safe': false,
         'allowUndefined': true
       }],
-      'nativewind/babel'
+      'nativewind/babel',
+      'react-native-reanimated/plugin'
     ]
   };
 };
